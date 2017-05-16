@@ -1,0 +1,12 @@
+.git
+.gitignore
+**/.DS_Store
+test/
+.deploy/
+.editorconfig
+.nvmrc
+circle.yml
+docker-compose.yml
+docker-compose.circle.yml
+docker-compose.dev.yml
+Dockerfile
