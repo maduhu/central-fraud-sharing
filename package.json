@@ -19,6 +19,8 @@
   "scripts": {
     "start": "node src/server.js",
     "test": "npm run test:unit | faucet",
+    "test:coverage": "istanbul cover tapes -- 'test/unit/**/*.test.js'",
+    "test:coverage-check": "npm run test:coverage && istanbul check-coverage",
     "pretest": "standard",
     "test:unit": "tapes 'test/unit/**/*.test.js'"
   },
@@ -41,5 +43,14 @@
   },
   "optionalDependencies": {
     "pg": "6.1.5"
+  },
+  "devDependencies": {
+    "faucet": "0.0.1",
+    "istanbul": "0.4.5",
+    "proxyquire": "^1.7.11",
+    "sinon": "1.17.6",
+    "standard": "8.5.0",
+    "tape": "4.6.2",
+    "tapes": "4.1.0"
   }
 }
