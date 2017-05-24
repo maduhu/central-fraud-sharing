@@ -42,6 +42,7 @@
     "joi": "10.4.1",
     "glue": "4.1.0",
     "rc": "1.2.1",
+    "uuid4": "1.0.0",
     "vision": "4.1.1"
   },
   "optionalDependencies": {

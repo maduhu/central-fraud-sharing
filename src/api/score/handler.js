@@ -1,20 +1,15 @@
 'use strict'
 
+const Uuid = require('uuid4')
 const Config = require('../../lib/config')
 
-const retrieveUserScore = (url) => {
+const getRandomScore = () => {
   let score = 0
-  if (url.includes("high")) {
-    score = 100
-  } else if (url.includes("medium")) {
-    score = 50
-  }
-  return score
+
 }
 
 exports.userScore = (request, reply) => {
-  const score = retrieveUserScore(request.payload.url)
-  const url = request.payload.url
-  const identifier = request.payload.identifier
-  reply({ url, identifier, score }).code(200)
+  const createdDate = new Date()
+  const score = createdDate.getMilliseconds() / 10
+  reply({ score, createdDate, id: Uuid() }).code(200)
 }
