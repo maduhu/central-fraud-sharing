@@ -51,7 +51,7 @@ Content-Type: application/json
 {
   "score": "48",
   "created": "2017-01-03T16:16:18.958Z",
-  "guid": "7d4f2a70-e0d6-42dc-9efb-6d23060ccd6",
+  "id": "7d4f2a70-e0d6-42dc-9efb-6d23060ccd6",
 }
 ```
 
@@ -156,4 +156,4 @@ A score object can have the following fields:
 | ---- | ---- | ----------- |
 | score   | Integer | The likelihood of fraud |
 | created | DateTime | Time when score was created |
-| guid | URI | Resource identifier |
+| id | URI | Resource identifier |
