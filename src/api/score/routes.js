@@ -15,7 +15,7 @@ module.exports = [
       description: 'Score for user',
       validate: {
         payload: {
-          identifier: Joi.string().required().description('Identifier for user'),
+          identifier: Joi.string().regex(/^[A-Za-z0-9]/).required().description('Identifier for user'),
           identifierType: Joi.string().required().valid('tel', 'eur').description('Identifier type for user')
         }
       }

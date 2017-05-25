@@ -55,6 +55,14 @@ Content-Type: application/json
 }
 ```
 
+#### Testing
+To test specifically for high fraud or low fraud users, include one of the listed Ids somewhere in the tel or eur.
+
+| Id | Type | Example | Returned |
+| ----- | ---- | ----------- | ------- |
+| 111 | Low Fraud | 123-456-0111 | 1 |
+| 999 | High Fraud | 123-456-0999| 99 |
+
 ### **Transfer fraud score**
 This endpoint returns the fraud score for a given transfer
 
@@ -106,6 +114,14 @@ Content-Type: application/json
   "guid": "6d4g2a82-e0f6-41dc-8efb-6d27060ccd6",
 }
 ```
+
+#### Testing
+To test specifically for high fraud or low fraud transfer, include one of the listed Ids somewhere in either account uri. If more than one Id is included, it will return the higher of the fraud scores.
+
+| Id | Type | Example | Returned |
+| ----- | ---- | ----------- | ------- |
+| 111 | Low Fraud | http://central-ledger/accounts/dfsp111 | 1 |
+| 999 | High Fraud | http://central-ledger/accounts/dfsp999 | 99 |
 
 ***
 
