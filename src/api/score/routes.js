@@ -15,7 +15,7 @@ module.exports = [
       id: 'user_score',
       validate: {
         payload: {
-          identifier: Joi.number().required().description('Identifier for user'),
+          identifier: Joi.string().required().description('Identifier for user'),
           identifierType: Joi.string().required().valid('tel', 'eur').description('Identifier type for user')
         }
       }
