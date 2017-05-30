@@ -1,6 +1,4 @@
 {
-  "PORT": 3000,
-  "HOSTNAME": "http://central-fraud-sharing",
-  "END_USER_REGISTRY_URL": "http://central-fraud-sharing-1833170602.us-west-2.elb.amazonaws.com",
-  "SCHEME_ID": "001"
+  "PORT": 3002,
+  "HOSTNAME": "http://central-fraud-sharing"
 }
