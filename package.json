@@ -19,6 +19,7 @@
   "scripts": {
     "start": "node src/server.js",
     "test": "npm run test:unit | faucet",
+    "test:xunit": "tape 'test/unit/**/*.test.js' | tap-xunit",
     "test:coverage": "istanbul cover tapes -- 'test/unit/**/*.test.js'",
     "test:coverage-check": "npm run test:coverage && istanbul check-coverage",
     "test:circle": "./test/functional-runner.sh docker-compose.yml docker-compose.circle.yml .env",
