@@ -9,5 +9,5 @@ COPY package.json .npmrc /opt/central-fraud-sharing/
 RUN apk add --no-cache make gcc g++ python && \
   npm install --production
 
-EXPOSE 3000
+EXPOSE 3002
 CMD node src/server.js
