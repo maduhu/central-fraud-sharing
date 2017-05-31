@@ -1,6 +1,7 @@
 'use strict'
 
 const Test = require('tapes')(require('tape'))
+const Sinon = require('sinon')
 const Handler = require('../../../../src/api/score/handler')
 
 const createPost = payload => {
@@ -11,11 +12,16 @@ const createPost = payload => {
 }
 
 Test('score handler', handlerTest => {
+  let clock
+  let now = new Date(2017, 1, 1, 0, 0, 0, 100)
+
   handlerTest.beforeEach(t => {
+    clock = Sinon.useFakeTimers(now.getTime())
     t.end()
   })
 
   handlerTest.afterEach(t => {
+    clock.restore()
     t.end()
   })
 
@@ -26,8 +32,8 @@ Test('score handler', handlerTest => {
 
       const reply = response => {
         test.ok(response.id)
-        test.ok(response.createdDate)
-        test.ok(response.score)
+        test.deepEqual(response.createdDate, now)
+        test.equal(response.score, 10)
         return {
           code: (statusCode) => {
             test.equal(statusCode, 200)
