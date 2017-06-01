@@ -19,6 +19,5 @@ module.exports = {
   JFROG_REPO: process.env.JFROG_REPO || 'modusbox-level1-docker-release.jfrog.io',
   POSTGRES_USER: process.env.DEV_POSTGRES_USER,
   POSTGRES_PASSWORD: process.env.DEV_POSTGRES_PASSWORD,
-  POSTGRES_HOST: process.env.DEV_POSTGRES_HOST,
-  DEFAULT_DFSP: process.env.DEFAULT_DFSP || 'dfsp1'
+  POSTGRES_HOST: process.env.DEV_POSTGRES_HOST
 }
