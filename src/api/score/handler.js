@@ -2,8 +2,16 @@
 
 const Uuid = require('uuid4')
 
-exports.userScore = (request, reply) => {
+const randomScore = () => {
   const createdDate = new Date()
   const score = Math.round(createdDate.getMilliseconds() / 10)
-  reply({ id: Uuid(), createdDate, score }).code(200)
+  return { id: Uuid(), createdDate, score }
+}
+
+exports.userScore = (request, reply) => {
+  reply(randomScore()).code(200)
+}
+
+exports.transferScore = (request, reply) => {
+  reply(randomScore()).code(200)
 }
