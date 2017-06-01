@@ -48,8 +48,8 @@ Test('score handler', handlerTest => {
     userScoreTest.end()
   })
 
-  handlerTest.test('userScore should', transferScoreTest => {
-    transferScoreTest.test('return the fraud score for a given user', test => {
+  handlerTest.test('transferScore should', transferScoreTest => {
+    transferScoreTest.test('return the fraud score for a given transfer', test => {
       const payload = {
         id: 'https://central-ledger/transfers/3a2a1d9e-8640-4d2d-b06c-84f2cd613204',
         ledger: 'http://usd-ledger.example/USD',
