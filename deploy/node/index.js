@@ -7,12 +7,7 @@ const Jfrog = require('./jfrog')
 const Variables = require('./variables')
 
 const pushService = ({ IMAGE, NAME, PORT }, version) => {
-  const databaseUri = `postgres://${Variables.POSTGRES_USER}:${Variables.POSTGRES_PASSWORD}@${Variables.POSTGRES_HOST}:5432/central_fraud_sharing`
   const envVariables = [
-    {
-      name: 'FSHARE_DATABASE_URI',
-      value: databaseUri
-    },
     {
       name: 'FSHARE_HOSTNAME',
       value: Variables.HOSTNAME
