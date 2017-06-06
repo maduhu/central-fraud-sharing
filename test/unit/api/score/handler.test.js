@@ -82,8 +82,7 @@ Test('score handler', handlerTest => {
     })
 
     userScoreTest.test('return the fraud score for a blacklisted user', test => {
-      const identifier = '000100'
-      const identifierType = 'tel'
+      const identifier = 'tel:000100'
 
       const reply = response => {
         test.ok(response.id)
@@ -97,7 +96,7 @@ Test('score handler', handlerTest => {
         }
       }
 
-      Handler.userScore(createPost({ identifier, identifierType }), reply)
+      Handler.userScore(createPost({ identifier }), reply)
     })
     userScoreTest.end()
   })

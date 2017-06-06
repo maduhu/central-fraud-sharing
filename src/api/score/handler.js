@@ -8,13 +8,11 @@ const BLACKLIST = '100'
 const parseIdentifier = (queryIdentifier) => {
   let identifier = ''
   let identifierType = ''
-
   if (queryIdentifier !== undefined && queryIdentifier.includes(':')) {
     const splitQueryIdentifier = queryIdentifier.split(':')
     identifierType = splitQueryIdentifier[0]
     identifier = splitQueryIdentifier[1]
   }
-
   return { identifier, identifierType }
 }
 
