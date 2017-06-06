@@ -62,6 +62,7 @@ To test specifically for high fraud or low fraud users, include one of the liste
 | ----- | ---- | ----------- | ------- |
 | 111 | Low Fraud | 123-456-0111 | 1 |
 | 999 | High Fraud | 123-456-0999| 99 |
+| 100 | Blacklisted | 123-456-0100| 100 |
 
 ### **Transfer fraud score**
 This endpoint returns the fraud score for a given transfer
@@ -122,6 +123,8 @@ To test specifically for high fraud or low fraud transfer, include one of the li
 | ----- | ---- | ----------- | ------- |
 | 111 | Low Fraud | http://central-ledger/accounts/dfsp111 | 1 |
 | 999 | High Fraud | http://central-ledger/accounts/dfsp999 | 99 |
+| 100 | Blacklisted | http://central-ledger/accounts/dfsp100 | 100 |
+
 
 ***
 
