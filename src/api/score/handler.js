@@ -5,6 +5,19 @@ const HIGH_FRAUD = '999'
 const LOW_FRAUD = '111'
 const BLACKLIST = '100'
 
+const parseIdentifier = (queryIdentifier) => {
+  let identifier = ''
+  let identifierType = ''
+
+  if (queryIdentifier !== undefined && queryIdentifier.includes(':')) {
+    const splitQueryIdentifier = queryIdentifier.split(':')
+    identifierType = splitQueryIdentifier[0]
+    identifier = splitQueryIdentifier[1]
+  }
+
+  return { identifier, identifierType }
+}
+
 const randomFraud = () => {
   const createdDate = new Date()
   const score = Math.round(createdDate.getMilliseconds() / 10)
@@ -24,7 +37,7 @@ const calculateFraud = (account = '', account2 = '') => {
 }
 
 exports.userScore = (request, reply) => {
-  reply(calculateFraud(request.payload.identifier)).code(200)
+  reply(calculateFraud(parseIdentifier(request.payload.identifier).identifier)).code(200)
 }
 
 exports.transferScore = (request, reply) => {

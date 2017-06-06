@@ -28,8 +28,7 @@ Test('score handler', handlerTest => {
 
   handlerTest.test('userScore should', userScoreTest => {
     userScoreTest.test('return the fraud score for a given user', test => {
-      const identifier = '12345'
-      const identifierType = 'tel'
+      const identifier = 'tel:12345'
 
       const reply = response => {
         test.ok(response.id)
@@ -43,12 +42,11 @@ Test('score handler', handlerTest => {
         }
       }
 
-      Handler.userScore(createPost({ identifier, identifierType }), reply)
+      Handler.userScore(createPost({ identifier }), reply)
     })
 
     userScoreTest.test('return the fraud score for a high fraud user', test => {
-      const identifier = '000999'
-      const identifierType = 'tel'
+      const identifier = 'tel:000999'
 
       const reply = response => {
         test.ok(response.id)
@@ -62,12 +60,11 @@ Test('score handler', handlerTest => {
         }
       }
 
-      Handler.userScore(createPost({ identifier, identifierType }), reply)
+      Handler.userScore(createPost({ identifier }), reply)
     })
 
     userScoreTest.test('return the fraud score for a low fraud user', test => {
-      const identifier = '000111'
-      const identifierType = 'tel'
+      const identifier = 'tel:000111'
 
       const reply = response => {
         test.ok(response.id)
@@ -81,7 +78,7 @@ Test('score handler', handlerTest => {
         }
       }
 
-      Handler.userScore(createPost({ identifier, identifierType }), reply)
+      Handler.userScore(createPost({ identifier }), reply)
     })
 
     userScoreTest.test('return the fraud score for a blacklisted user', test => {
