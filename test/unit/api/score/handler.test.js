@@ -83,6 +83,25 @@ Test('score handler', handlerTest => {
 
       Handler.userScore(createPost({ identifier, identifierType }), reply)
     })
+
+    userScoreTest.test('return the fraud score for a blacklisted user', test => {
+      const identifier = '000100'
+      const identifierType = 'tel'
+
+      const reply = response => {
+        test.ok(response.id)
+        test.ok(response.createdDate)
+        test.equal(response.score, 100)
+        return {
+          code: (statusCode) => {
+            test.equal(statusCode, 200)
+            test.end()
+          }
+        }
+      }
+
+      Handler.userScore(createPost({ identifier, identifierType }), reply)
+    })
     userScoreTest.end()
   })
 
@@ -181,6 +200,41 @@ Test('score handler', handlerTest => {
         test.ok(response.id)
         test.ok(response.createdDate)
         test.equal(response.score, 1)
+        return {
+          code: (statusCode) => {
+            test.equal(statusCode, 200)
+            test.end()
+          }
+        }
+      }
+
+      Handler.transferScore(createPost(payload), reply)
+    })
+
+    transferScoreTest.test('return the fraud score for a blacklisted transfer', test => {
+      const payload = {
+        id: 'https://central-ledger/transfers/3a2a1d9e-8640-4d2d-b06c-84f2cd613204',
+        ledger: 'http://usd-ledger.example/USD',
+        debits: [
+          {
+            account: 'http://usd-ledger.example/USD/accounts/alice100',
+            amount: '50'
+          }
+        ],
+        credits: [
+          {
+            account: 'http://usd-ledger.example/USD/accounts/bob111',
+            amount: '50'
+          }
+        ],
+        execution_condition: executionCondition,
+        expires_at: '2015-06-16T00:00:01.000Z'
+      }
+
+      const reply = response => {
+        test.ok(response.id)
+        test.ok(response.createdDate)
+        test.equal(response.score, 100)
         return {
           code: (statusCode) => {
             test.equal(statusCode, 200)

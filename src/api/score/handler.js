@@ -3,6 +3,7 @@
 const Uuid = require('uuid4')
 const HIGH_FRAUD = '999'
 const LOW_FRAUD = '111'
+const BLACKLIST = '100'
 
 const randomFraud = () => {
   const createdDate = new Date()
@@ -12,7 +13,9 @@ const randomFraud = () => {
 
 const calculateFraud = (account = '', account2 = '') => {
   const fraud = randomFraud()
-  if (account.includes(HIGH_FRAUD) || account2.includes(HIGH_FRAUD)) {
+  if (account.includes(BLACKLIST) || account2.includes(BLACKLIST)) {
+    fraud.score = 100
+  } else if (account.includes(HIGH_FRAUD) || account2.includes(HIGH_FRAUD)) {
     fraud.score = 99
   } else if (account.includes(LOW_FRAUD) || account2.includes(LOW_FRAUD)) {
     fraud.score = 1
