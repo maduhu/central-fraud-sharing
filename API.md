@@ -26,8 +26,8 @@ This endpoint returns the fraud score for a given user
 #### Request body
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| id | String | The id of the given user |
-| idType | String | The type of the id could be of type **tel** or **eur** |
+| identifier | String | The identifier type and identifier to be created, separated by a colon |
+
 
 #### Response 200 OK
 | Field | Type | Description |
@@ -39,8 +39,7 @@ This endpoint returns the fraud score for a given user
 POST http://central-fraud-sharing/score/user HTTP/1.1
 Content-Type: application/json
 {
-  "id": "1112223456",
-  "idType": "tel"
+  "identifier": "tel:1112223456",
 }
 ```
 

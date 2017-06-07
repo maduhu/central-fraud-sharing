@@ -28,8 +28,7 @@ Test('score handler', handlerTest => {
 
   handlerTest.test('userScore should', userScoreTest => {
     userScoreTest.test('return the fraud score for a given user', test => {
-      const identifier = '12345'
-      const identifierType = 'tel'
+      const identifier = 'tel:12345'
 
       const reply = response => {
         test.ok(response.id)
@@ -43,12 +42,11 @@ Test('score handler', handlerTest => {
         }
       }
 
-      Handler.userScore(createPost({ identifier, identifierType }), reply)
+      Handler.userScore(createPost({ identifier }), reply)
     })
 
     userScoreTest.test('return the fraud score for a high fraud user', test => {
-      const identifier = '000999'
-      const identifierType = 'tel'
+      const identifier = 'tel:000999'
 
       const reply = response => {
         test.ok(response.id)
@@ -62,12 +60,11 @@ Test('score handler', handlerTest => {
         }
       }
 
-      Handler.userScore(createPost({ identifier, identifierType }), reply)
+      Handler.userScore(createPost({ identifier }), reply)
     })
 
     userScoreTest.test('return the fraud score for a low fraud user', test => {
-      const identifier = '000111'
-      const identifierType = 'tel'
+      const identifier = 'tel:000111'
 
       const reply = response => {
         test.ok(response.id)
@@ -81,12 +78,11 @@ Test('score handler', handlerTest => {
         }
       }
 
-      Handler.userScore(createPost({ identifier, identifierType }), reply)
+      Handler.userScore(createPost({ identifier }), reply)
     })
 
     userScoreTest.test('return the fraud score for a blacklisted user', test => {
-      const identifier = '000100'
-      const identifierType = 'tel'
+      const identifier = 'tel:000100'
 
       const reply = response => {
         test.ok(response.id)
@@ -100,8 +96,27 @@ Test('score handler', handlerTest => {
         }
       }
 
-      Handler.userScore(createPost({ identifier, identifierType }), reply)
+      Handler.userScore(createPost({ identifier }), reply)
     })
+
+    userScoreTest.test('default to random fraud score for invalid identifier', test => {
+      const identifier = 'tel12345'
+
+      const reply = response => {
+        test.ok(response.id)
+        test.deepEqual(response.createdDate, now)
+        test.equal(response.score, 10)
+        return {
+          code: (statusCode) => {
+            test.equal(statusCode, 200)
+            test.end()
+          }
+        }
+      }
+
+      Handler.userScore(createPost({ identifier }), reply)
+    })
+
     userScoreTest.end()
   })
 
