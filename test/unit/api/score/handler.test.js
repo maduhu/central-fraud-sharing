@@ -98,6 +98,25 @@ Test('score handler', handlerTest => {
 
       Handler.userScore(createPost({ identifier }), reply)
     })
+
+    userScoreTest.test('default to random fraud score for invalid identifier', test => {
+      const identifier = 'tel12345'
+
+      const reply = response => {
+        test.ok(response.id)
+        test.deepEqual(response.createdDate, now)
+        test.equal(response.score, 10)
+        return {
+          code: (statusCode) => {
+            test.equal(statusCode, 200)
+            test.end()
+          }
+        }
+      }
+
+      Handler.userScore(createPost({ identifier }), reply)
+    })
+
     userScoreTest.end()
   })
 
