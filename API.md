@@ -116,7 +116,7 @@ Content-Type: application/json
 ```
 
 #### Testing
-To test specifically for high fraud or low fraud transfer, include one of the listed Ids somewhere in either account uri. If more than one Id is included, it will return the higher of the fraud scores.
+To test specifically for high fraud or low fraud transfer, include one of the listed Ids somewhere in either account uri. If more than one Id is included, it will return the higher of the fraud scores. If none of the scenarios below are leveraged, a score randomly assigned from 1-99 will be returned.
 
 | Id | Type | Example | Returned |
 | ----- | ---- | ----------- | ------- |
